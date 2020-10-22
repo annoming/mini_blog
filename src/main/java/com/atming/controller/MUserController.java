@@ -1,11 +1,12 @@
 package com.atming.controller;
 
 
+import com.atming.common.lang.Result;
+import com.atming.entity.MUser;
 import com.atming.service.IMUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -25,6 +26,7 @@ public class MUserController {
 
     @GetMapping("/index")
     public Object index() {
-        return userService.getById(1);
+        MUser user = userService.getById(1);
+        return Result.success(user);
     }
 }
