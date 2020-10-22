@@ -37,6 +37,10 @@ public class CodeGenerator {
         throw new MybatisPlusException("请输入正确的" + tip + "！");
     }
 
+    /**
+     * TODO 研究代码自动生成的底层原理
+     * @param args
+     */
     public static void main(String[] args) {
         // 代码生成器
         AutoGenerator mpg = new AutoGenerator();
