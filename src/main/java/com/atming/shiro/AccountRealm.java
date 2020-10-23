@@ -18,6 +18,12 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class AccountRealm extends AuthorizingRealm {
+
+    @Override
+    public boolean supports(AuthenticationToken token) {
+        return token instanceof JwtToken;
+    }
+
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         return null;
@@ -25,6 +31,7 @@ public class AccountRealm extends AuthorizingRealm {
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
+        JwtToken jwtToken = (JwtToken) authenticationToken;
         return null;
     }
 }
