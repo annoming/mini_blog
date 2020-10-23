@@ -1,12 +1,12 @@
 package com.atming.config;
 
+import com.atming.shiro.AccountRealm;
 import org.apache.shiro.mgt.SessionsSecurityManager;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.crazycake.shiro.RedisCacheManager;
 import org.crazycake.shiro.RedisSessionDAO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -42,8 +42,8 @@ public class ShiroConfig {
     }
 
     @Bean
-    public SessionsSecurityManager securityManager(List<Realm> realms, SessionManager sessionManager,RedisCacheManager redisCacheManager) {
-        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager(realms);
+    public SessionsSecurityManager securityManager(AccountRealm accountRealm, SessionManager sessionManager, RedisCacheManager redisCacheManager) {
+        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager(accountRealm);
 
         //inject sessionManager
         securityManager.setSessionManager(sessionManager);
