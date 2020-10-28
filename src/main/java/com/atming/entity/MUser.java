@@ -1,9 +1,10 @@
 package com.atming.entity;
 
-import java.time.LocalDateTime;
-import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -18,6 +19,8 @@ import lombok.EqualsAndHashCode;
 public class MUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    private Long id;
 
     private String username;
 
