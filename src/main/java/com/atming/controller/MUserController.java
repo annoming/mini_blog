@@ -4,6 +4,7 @@ package com.atming.controller;
 import com.atming.common.lang.Result;
 import com.atming.entity.MUser;
 import com.atming.service.IMUserService;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,7 @@ public class MUserController {
     @Autowired
     IMUserService userService;
 
+    @RequiresAuthentication
     @GetMapping("/index")
     public Object index() {
         MUser user = userService.getById(1);
