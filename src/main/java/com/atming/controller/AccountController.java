@@ -9,8 +9,11 @@ import com.atming.entity.MUser;
 import com.atming.service.IMUserService;
 import com.atming.util.JwtUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -54,5 +57,10 @@ public class AccountController {
         );
     }
 
-
+    @RequiresAuthentication
+    @GetMapping("/logout")
+    public Result logout(){
+        SecurityUtils.getSubject().logout();
+        return Result.success(null);
+    }
 }
