@@ -46,4 +46,11 @@ public class GlobalExceptionHandler {
         log.error("运行时异常：================{}",e);
         return Result.fail(e.getMessage());
     }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(value = IllegalArgumentException.class )
+    public Result handler(IllegalArgumentException e){
+        log.error("Assert异常：================{}",e);
+        return Result.fail(e.getMessage());
+    }
 }
