@@ -6,9 +6,8 @@ import com.atming.entity.MUser;
 import com.atming.service.IMUserService;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -27,8 +26,13 @@ public class MUserController {
 
     @RequiresAuthentication
     @GetMapping("/index")
-    public Object index() {
+    public Result index() {
         MUser user = userService.getById(1);
+        return Result.success(user);
+    }
+
+    @PostMapping("/save")
+    public Result save(@Validated @RequestBody MUser user){
         return Result.success(user);
     }
 }
